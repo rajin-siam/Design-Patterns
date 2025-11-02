@@ -31,6 +31,128 @@ This project demonstrates the Observer pattern, a behavioral design pattern that
 3. Each observer receives updated data through the `update()` method
 4. Observers automatically display the new information
 
+## Class Diagram
+
+```mermaid
+classDiagram
+    class Subject {
+        <<interface>>
+        +RegisterObserver(Observer)
+        +RemoveObserver(Observer)
+        +NotifyObservers()
+    }
+    
+    class Observer {
+        <<interface>>
+        +update(float, float, float)
+    }
+    
+    class DisplayElement {
+        <<interface>>
+        +display()
+    }
+    
+    class WeatherData {
+        -ArrayList observers
+        -float temperature
+        -float humidity
+        -float pressure
+        +RegisterObserver(Observer)
+        +RemoveObserver(Observer)
+        +NotifyObservers()
+        +SetMeasurements(float, float, float)
+        -MeasurementsChanged()
+    }
+    
+    class CurrentConditionsDisplay {
+        -float temperature
+        -float humidity
+        -Subject weatherData
+        +update(float, float, float)
+        +display()
+    }
+    
+    class StatisticsDisplay {
+        -float temperature
+        -float humidity
+        -Subject weatherData
+        +update(float, float, float)
+        +display()
+    }
+    
+    class ForecastDisplay {
+        -float temperature
+        -float humidity
+        -Subject weatherData
+        +update(float, float, float)
+        +display()
+    }
+    
+    Subject <|.. WeatherData : implements
+    Observer <|.. CurrentConditionsDisplay : implements
+    Observer <|.. StatisticsDisplay : implements
+    Observer <|.. ForecastDisplay : implements
+    DisplayElement <|.. CurrentConditionsDisplay : implements
+    DisplayElement <|.. StatisticsDisplay : implements
+    DisplayElement <|.. ForecastDisplay : implements
+    WeatherData o--> Observer : notifies
+    CurrentConditionsDisplay --> Subject : observes
+    StatisticsDisplay --> Subject : observes
+    ForecastDisplay --> Subject : observes
+```
+
+## Program Flow
+
+```mermaid
+sequenceDiagram
+    participant P as Program
+    participant WD as WeatherData
+    participant CD as CurrentConditionsDisplay
+    participant SD as StatisticsDisplay
+    participant FD as ForecastDisplay
+    
+    P->>WD: new WeatherData()
+    P->>CD: new CurrentConditionsDisplay(weatherData)
+    CD->>WD: RegisterObserver(this)
+    P->>SD: new StatisticsDisplay(weatherData)
+    SD->>WD: RegisterObserver(this)
+    P->>FD: new ForecastDisplay(weatherData)
+    FD->>WD: RegisterObserver(this)
+    
+    Note over P,FD: First Measurement Update
+    P->>WD: SetMeasurements(80, 65, 30.4f)
+    WD->>WD: MeasurementsChanged()
+    WD->>WD: NotifyObservers()
+    WD->>CD: update(80, 65, 30.4f)
+    CD->>CD: display()
+    WD->>SD: update(80, 65, 30.4f)
+    SD->>SD: display()
+    WD->>FD: update(80, 65, 30.4f)
+    FD->>FD: display()
+    
+    Note over P,FD: Second Measurement Update
+    P->>WD: SetMeasurements(82, 70, 29.2f)
+    WD->>WD: MeasurementsChanged()
+    WD->>WD: NotifyObservers()
+    WD->>CD: update(82, 70, 29.2f)
+    CD->>CD: display()
+    WD->>SD: update(82, 70, 29.2f)
+    SD->>SD: display()
+    WD->>FD: update(82, 70, 29.2f)
+    FD->>FD: display()
+    
+    Note over P,FD: Third Measurement Update
+    P->>WD: SetMeasurements(78, 90, 29.2f)
+    WD->>WD: MeasurementsChanged()
+    WD->>WD: NotifyObservers()
+    WD->>CD: update(78, 90, 29.2f)
+    CD->>CD: display()
+    WD->>SD: update(78, 90, 29.2f)
+    SD->>SD: display()
+    WD->>FD: update(78, 90, 29.2f)
+    FD->>FD: display()
+```
+
 ## Project Structure
 
 ```
