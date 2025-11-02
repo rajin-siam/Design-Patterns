@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Design Patterns", "Design P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimUDuck", "SimUDuck\SimUDuck.csproj", "{3C423209-D575-48F2-94C2-43CF34522BD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "ObserverPattern\ObserverPattern.csproj", "{9F11B86D-5673-4931-B421-2EC6CBEA830D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3C423209-D575-48F2-94C2-43CF34522BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C423209-D575-48F2-94C2-43CF34522BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C423209-D575-48F2-94C2-43CF34522BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F11B86D-5673-4931-B421-2EC6CBEA830D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F11B86D-5673-4931-B421-2EC6CBEA830D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F11B86D-5673-4931-B421-2EC6CBEA830D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F11B86D-5673-4931-B421-2EC6CBEA830D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
