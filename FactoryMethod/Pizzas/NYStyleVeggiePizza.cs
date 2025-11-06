@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactoryMethod.Pizzas
 {
-    public class VeggiePizza : Pizza
+    public class NYStyleVeggiePizza : Pizza
     {
-        public VeggiePizza() => Name = "Veggie Pizza";
+        public NYStyleVeggiePizza() => Name = "Veggie Pizza";
     }
 }

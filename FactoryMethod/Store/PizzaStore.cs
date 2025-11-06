@@ -4,26 +4,22 @@ using FactoryMethod.Pizzas;
 
 namespace FactoryMethod.Store
 {
-    public class PizzaStore
+    public abstract class PizzaStore
     {
-        private readonly SimplePizzaFactory _factory;
+        // The Factory Method - subclasses will implement this
+        protected abstract Pizza CreatePizza(string type);
 
-        public PizzaStore(SimplePizzaFactory factory)
-        {
-            _factory = factory;
-        }
-
+        // The template method that uses the factory method
         public Pizza OrderPizza(string type)
         {
-            Pizza pizza = _factory.CreatePizza(type);
+            Pizza pizza = CreatePizza(type);  // Factory method call
 
-            if (pizza != null)
-            {
-                pizza.Prepare();
-                pizza.Bake();
-                pizza.Cut();
-                pizza.Box();
-            }
+            Console.WriteLine($"--- Making a {pizza.Name} ---");
+            pizza.Prepare();
+            pizza.Bake();
+            pizza.Cut();
+            pizza.Box();
+            Console.WriteLine();
 
             return pizza;
         }

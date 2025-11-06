@@ -22,7 +22,7 @@ namespace FactoryMethod.Factory
                     pizza = new PepperoniPizza();
                     break;
                 case "veggie":
-                    pizza = new VeggiePizza();
+                    pizza = new NYStyleVeggiePizza();
                     break;
                 default:
                     Console.WriteLine("Unknown pizza type");

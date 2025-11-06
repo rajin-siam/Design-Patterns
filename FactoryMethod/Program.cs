@@ -1,20 +1,22 @@
-﻿
-using FactoryMethod.Factory;
+﻿using FactoryMethod.Pizzas;
 using FactoryMethod.Store;
-
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        SimplePizzaFactory factory = new SimplePizzaFactory();
-        PizzaStore store = new PizzaStore(factory);
+        PizzaStore nyStore = new NYPizzaStore();
+        PizzaStore chicagoStore = new ChicagoPizzaStore();
 
-        store.OrderPizza("cheese");
-        Console.WriteLine();
+        Pizza pizza = nyStore.OrderPizza("cheese");
+        Console.WriteLine($"Ethan ordered a {pizza.Name}\n");
 
-        store.OrderPizza("veggie");
-        Console.WriteLine();
+        pizza = chicagoStore.OrderPizza("cheese");
+        Console.WriteLine($"Joel ordered a {pizza.Name}\n");
 
-        store.OrderPizza("pepperoni");
+        pizza = nyStore.OrderPizza("pepperoni");
+        Console.WriteLine($"Ethan ordered a {pizza.Name}\n");
+
+        pizza = chicagoStore.OrderPizza("pepperoni");
+        Console.WriteLine($"Joel ordered a {pizza.Name}\n");
     }
 }
