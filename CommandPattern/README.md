@@ -56,6 +56,12 @@ Think of it like a restaurant:
 └────────┘        └────────┘
 ```
 
+
+## Generic Diagram of Command Pattern
+
+![command pattern](./diagram.png)
+
+
 ## Project Structure Explained
 
 ### 1. **Command Interface (ICommand)**
